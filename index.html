@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CERO | VenePop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ff4500; --bg: #0a0a0a; --card: #161616; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: white; margin: 0; padding-bottom: 90px; }
+        header { position: sticky; top: 0; background: rgba(10,10,10,0.8); backdrop-filter: blur(10px); padding: 15px; text-align: center; border-bottom: 1px solid #222; z-index: 100; }
+        h1 { margin: 0; font-size: 1.3rem; letter-spacing: 2px; }
+        h1 span { color: var(--primary); }
+        #feed { max-width: 500px; margin: 0 auto; padding: 10px; }
+        .post { background: var(--card); border-radius: 20px; margin-bottom: 15px; overflow: hidden; border: 1px solid #222; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .post-header { padding: 12px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #222; }
+        .avatar { width: 30px; height: 30px; background: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--primary); border: 1px solid #444; }
+        .post-content { padding: 15px; font-size: 0.95rem; line-height: 1.4; }
+        .post img { width: 100%; max-height: 400px; object-fit: cover; border-top: 1px solid #222; }
+        .post-footer { padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #222; }
+        .like-btn { cursor: pointer; display: flex; align-items: center; gap: 5px; color: #888; transition: 0.2s; }
+        .like-btn:active { transform: scale(1.3); color: var(--primary); }
+        .fab { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 60px; height: 60px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 5px 20px rgba(255,69,0,0.4); cursor: pointer; z-index: 200; color: white; border: none; }
+        #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 300; padding: 20px; box-sizing: border-box; }
+        textarea { width: 100%; height: 200px; background: transparent; border: none; color: white; font-size: 1.1rem; outline: none; resize: none; }
+        .pub-btn { background: var(--primary); color: white; border: none; padding: 10px 25px; border-radius: 25px; font-weight: 800; float: right; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <header><h1>CE<span>RO</span></h1></header>
+
+    <div id="feed"></div>
+
+    <button class="fab" onclick="document.getElementById('modal').style.display='block'">+</button>
+
+    <div id="modal">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <span onclick="document.getElementById('modal').style.display='none'" style="cursor:pointer; color:#888;">Cancelar</span>
+            <button class="pub-btn" id="btnMain" onclick="subirPost()">Publicar</button>
+        </div>
+        <textarea id="textoInput" placeholder="¿Qué está pasando? Suelta el beta..."></textarea>
+        <input type="file" id="fotoInput" accept="image/*" style="margin-top:20px; color:#888;">
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-storage-compat.js"></script>
+
+    <script>
+        // TUS CREDENCIALES REALES DE VENEPOP
+        const firebaseConfig = {
+          apiKey: "AIzaSyBqWmGTsmfFJSy9x5ld9Rb5u9GEBBKF2FE",
+          authDomain: "venepop-b642b.firebaseapp.com",
+          databaseURL: "https://venepop-b642b-default-rtdb.firebaseio.com/",
+          projectId: "venepop-b642b",
+          storageBucket: "venepop-b642b.firebasestorage.app",
+          messagingSenderId: "257279813856",
+          appId: "1:257279813856:web:32733306545744437e8885",
+          measurementId: "G-D2KXSRQ0XN"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const storage = firebase.storage();
+
+        async function subirPost() {
+            const texto = document.getElementById('textoInput').value;
+            const archivo = document.getElementById('fotoInput').files[0];
+            const btn = document.getElementById('btnMain');
+            
+            if(!texto && !archivo) return;
+            btn.disabled = true;
+            btn.innerText = "...";
+
+            let url = "";
+            if(archivo) {
+                try {
+                    const ref = storage.ref('img/' + Date.now());
+                    await ref.put(archivo);
+                    url = await ref.getDownloadURL();
+                } catch(e) { alert("Error al subir foto. ¿Activaste el Storage?"); }
+            }
+
+            await db.ref('posts').push({
+                texto: texto,
+                img: url,
+                likes: 0,
+                fecha: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})
+            });
+
+            document.getElementById('modal').style.display='none';
+            document.getElementById('textoInput').value='';
+            document.getElementById('fotoInput').value='';
+            btn.disabled = false;
+            btn.innerText = "Publicar";
+        }
+
+        function darLike(id) {
+            db.ref('posts/' + id + '/likes').transaction(l => (l || 0) + 1);
+        }
+
+        db.ref('posts').on('value', res => {
+            const feed = document.getElementById('feed');
+            feed.innerHTML = "";
+            const posts = [];
+            res.forEach(p => { posts.push({id: p.key, ...p.val()}); });
+            
+            posts.reverse().forEach(d => {
+                feed.insertAdjacentHTML('beforeend', `
+                    <div class="post">
+                        <div class="post-header"><div class="avatar">?</div><b>Anónimo</b></div>
+                        <div class="post-content">${d.texto}</div>
+                        ${d.img ? `<img src="${d.img}">` : ''}
+                        <div class="post-footer">
+                            <span class="like-btn" onclick="darLike('${d.id}')">❤️ ${d.likes || 0}</span>
+                            <span style="color:#444; font-size:0.8rem;">${d.fecha}</span>
+                        </div>
+                    </div>
+                `);
+            });
+        });
+    </script>
+</body>
+</html>
