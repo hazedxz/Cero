@@ -7,73 +7,74 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         :root { --lol-gold: #c89b3c; --lol-blue: #0ac8b9; --dark-void: #010a13; }
-        body, html { margin: 0; padding: 0; background-color: var(--dark-void); color: #f0f5f5; font-family: 'Orbitron', sans-serif; }
+        body, html { margin: 0; padding: 0; background-color: var(--dark-void); color: #f0f5f5; font-family: 'Orbitron', sans-serif; text-align: center; }
         
-        /* Pantalla de Inicio */
         #bloqueo { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #010a13; z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 4px solid var(--lol-gold); }
         .btn-entrar { background: #1e2328; border: 2px solid var(--lol-gold); color: var(--lol-gold); padding: 15px 50px; cursor: pointer; font-family: 'Orbitron'; letter-spacing: 3px; }
 
-        header { height: 40vh; background: linear-gradient(rgba(1,10,19,0.8), rgba(1,10,19,0.9)), url('https://static.invenglobal.com/upload/image/2018/11/19/i1542661073831828.jpeg'); background-size: cover; display: flex; align-items: center; justify-content: center; border-bottom: 2px solid var(--lol-gold); }
+        header { padding: 40px; background: linear-gradient(rgba(1,10,19,0.8), rgba(1,10,19,0.9)), url('https://static.invenglobal.com/upload/image/2018/11/19/i1542661073831828.jpeg'); border-bottom: 2px solid var(--lol-gold); }
         
-        .container { max-width: 900px; margin: -60px auto 50px; padding: 20px; display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+        .container { max-width: 900px; margin: 20px auto; padding: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
 
-        /* AQUI ESTA EL CAMBIO: El marco para la foto de tu amigo */
-        .profile-card { background: #091428; border: 2px solid var(--lol-gold); padding: 30px; border-radius: 5px; text-align: center; }
+        .profile-card { background: #091428; border: 2px solid var(--lol-gold); padding: 30px; border-radius: 5px; width: 300px; }
+        
+        /* CONTENEDOR DE LA IMAGEN REPARADO */
         .avatar-frame { 
-            width: 160px; height: 160px; 
+            width: 180px; height: 180px; 
             margin: 0 auto 20px; 
             border: 4px solid var(--lol-gold); 
-            border-radius: 50%; /* La hace redonda */
-            overflow: hidden; /* Corta la imagen para que encaje */
+            border-radius: 50%; 
+            overflow: hidden;
             box-shadow: 0 0 20px var(--lol-gold);
             background: #000;
+            display: flex; align-items: center; justify-content: center;
         }
         .avatar-img { 
             width: 100%; height: 100%; 
-            object-fit: cover; /* Ajusta la foto para que no se vea estirada */
+            object-fit: cover; /* Esto hace que la foto de tu amigo no se estire */
         }
 
-        .ig-link { display: block; margin-top: 15px; padding: 10px; background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); color: white; text-decoration: none; border-radius: 5px; font-size: 0.8rem; font-weight: bold; }
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .mc-block { background: #222; border: 2px solid var(--lol-gold); padding: 15px; text-align: center; }
-        .mc-block span { display: block; font-family: 'Press Start 2P'; color: #38e038; font-size: 0.9rem; }
-        .panic-btn { background: #780a0a; color: white; border: 2px solid red; padding: 20px; width: 100%; margin-top: 20px; cursor: pointer; font-family: 'Press Start 2P'; font-size: 0.7rem; }
+        .ig-link { display: block; margin-top: 15px; padding: 12px; background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 0.8rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+        .mc-block { background: #222; border: 2px solid var(--lol-gold); padding: 10px; }
+        .mc-block span { display: block; font-family: 'Press Start 2P'; color: #38e038; font-size: 0.8rem; }
+        .panic-btn { background: #780a0a; color: white; border: 2px solid red; padding: 15px; width: 100%; cursor: pointer; font-family: 'Press Start 2P'; font-size: 0.6rem; }
     </style>
 </head>
 <body>
 
     <div id="bloqueo">
-        <h2 style="color: var(--lol-gold); font-family: 'Press Start 2P'; font-size: 1rem;">PLAYER FOUND: LUIS ERNESTO</h2>
-        <button class="btn-entrar" onclick="iniciar()">CARGAR PERFIL</button>
+        <h2 style="color: var(--lol-gold); font-family: 'Press Start 2P'; font-size: 0.8rem;">SISTEMA CARGANDO...</h2>
+        <button class="btn-entrar" onclick="iniciar()">ENTRAR AL SANTUARIO</button>
     </div>
 
     <audio id="halo" loop><source src="halo.mp3" type="audio/mpeg"></audio>
 
     <header>
-        <h1 style="font-family: 'Press Start 2P'; color: var(--lol-gold); font-size: 1.5rem;">SANTUARIO GAMER</h1>
+        <h1 style="font-family: 'Press Start 2P'; color: var(--lol-gold); font-size: 1.2rem;">SANTUARIO GAMER</h1>
     </header>
 
     <div class="container">
         <div class="profile-card">
             <div class="avatar-frame">
-                <img src="amigo.png" alt="Luis Ernesto" class="avatar-img">
+                <img src="amigo.PNG" alt="Luis Ernesto" class="avatar-img">
             </div>
-            <h2 style="margin: 0; color: var(--lol-gold); font-size: 1.2rem;">LUIS ERNESTO</h2>
-            <p style="font-size: 0.7rem; color: #888;">LVL 99 - ARCHIMAGO DE LA PUREZA</p>
+            <h2 style="margin: 0; color: var(--lol-gold); font-size: 1.1rem;">LUIS ERNESTO</h2>
+            <p style="font-size: 0.7rem; color: #888;">LVL 99 - MAGO DE LA VIRGINIDAD</p>
             <a href="https://www.instagram.com/ernesto_zwlr/" target="_blank" class="ig-link">📸 INSTAGRAM</a>
         </div>
 
-        <div>
+        <div style="max-width: 500px;">
             <div class="stats-grid">
-                <div class="mc-block"><span>14</span><p style="font-size: 0.6rem;">DÍAS SIN SOL</p></div>
-                <div class="mc-block"><span>0%</span><p style="font-size: 0.6rem;">SOCIAL</p></div>
-                <div class="mc-block"><span>342</span><p style="font-size: 0.6rem;">SKINS LOL</p></div>
+                <div class="mc-block"><span>14</span><p style="font-size: 0.5rem;">DÍAS SIN SOL</p></div>
+                <div class="mc-block"><span>0%</span><p style="font-size: 0.5rem;">SOCIAL</p></div>
+                <div class="mc-block"><span>342</span><p style="font-size: 0.5rem;">SKINS LOL</p></div>
             </div>
-            <div style="background: rgba(10,20,40,0.9); border: 1px solid var(--lol-blue); padding: 20px; margin-top: 20px; text-align: left;">
+            <div style="background: rgba(10,20,40,0.9); border: 1px solid var(--lol-blue); padding: 20px; text-align: left; font-size: 0.8rem;">
                 <p style="color: var(--lol-blue); font-weight: bold;">📜 QUEST: MANTENER VIRGINIDAD</p>
-                <p style="font-size: 0.8rem;">- Evitar contacto visual con mujeres.<br>- No desinstalar el LoL jamás.<br>- Dormir con la PC encendida.</p>
+                <p>- No tocar pasto.<br>- No desinstalar el LoL.<br>- Dormir con la PC encendida.</p>
             </div>
-            <button class="panic-btn" onclick="alert('ERROR: SISTEMA DE DEFENSA ACTIVADO.')">🚨 BOTÓN DE PÁNICO</button>
+            <button class="panic-btn" onclick="alert('PROTOCOLO DE EMERGENCIA: LUIS ERNESTO ESTÁ HUYENDO DE UNA MUJER.')">🚨 BOTÓN DE PÁNICO</button>
         </div>
     </div>
 
