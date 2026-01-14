@@ -6,248 +6,82 @@
     <title>Gamer Sanctum | Luis Ernesto</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --lol-gold: #c89b3c;
-            --lol-blue: #0ac8b9;
-            --mc-green: #38e038;
-            --dark-void: #010a13;
+        :root { --lol-gold: #c89b3c; --lol-blue: #0ac8b9; --dark-void: #010a13; }
+        body, html { margin: 0; padding: 0; background-color: var(--dark-void); color: #f0f5f5; font-family: 'Orbitron', sans-serif; }
+        
+        /* Pantalla de Inicio */
+        #bloqueo { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #010a13; z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 4px solid var(--lol-gold); }
+        .btn-entrar { background: #1e2328; border: 2px solid var(--lol-gold); color: var(--lol-gold); padding: 15px 50px; cursor: pointer; font-family: 'Orbitron'; letter-spacing: 3px; }
+
+        header { height: 40vh; background: linear-gradient(rgba(1,10,19,0.8), rgba(1,10,19,0.9)), url('https://static.invenglobal.com/upload/image/2018/11/19/i1542661073831828.jpeg'); background-size: cover; display: flex; align-items: center; justify-content: center; border-bottom: 2px solid var(--lol-gold); }
+        
+        .container { max-width: 900px; margin: -60px auto 50px; padding: 20px; display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+
+        /* AQUI ESTA EL CAMBIO: El marco para la foto de tu amigo */
+        .profile-card { background: #091428; border: 2px solid var(--lol-gold); padding: 30px; border-radius: 5px; text-align: center; }
+        .avatar-frame { 
+            width: 160px; height: 160px; 
+            margin: 0 auto 20px; 
+            border: 4px solid var(--lol-gold); 
+            border-radius: 50%; /* La hace redonda */
+            overflow: hidden; /* Corta la imagen para que encaje */
+            box-shadow: 0 0 20px var(--lol-gold);
+            background: #000;
+        }
+        .avatar-img { 
+            width: 100%; height: 100%; 
+            object-fit: cover; /* Ajusta la foto para que no se vea estirada */
         }
 
-        body, html {
-            margin: 0; padding: 0;
-            background-color: var(--dark-void);
-            color: #f0f5f5;
-            font-family: 'Orbitron', sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* Pantalla de Carga Estilo Client LoL */
-        #bloqueo {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, #091428 0%, #010a13 100%);
-            z-index: 10000; display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            border: 5px solid var(--lol-gold);
-        }
-
-        .btn-entrar {
-            background: #1e2328;
-            border: 2px solid var(--lol-gold);
-            color: var(--lol-gold);
-            padding: 15px 60px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            transition: 0.3s;
-            box-shadow: inset 0 0 10px rgba(200,155,60,0.2);
-        }
-
-        .btn-entrar:hover {
-            background: var(--lol-gold);
-            color: #010a13;
-            box-shadow: 0 0 30px var(--lol-gold);
-        }
-
-        /* Fondo Animado */
-        header {
-            height: 50vh;
-            background: linear-gradient(rgba(1, 10, 19, 0.7), rgba(1, 10, 19, 0.9)), 
-                        url('https://static.invenglobal.com/upload/image/2018/11/19/i1542661073831828.jpeg');
-            background-size: cover;
-            background-position: center;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            border-bottom: 2px solid var(--lol-gold);
-        }
-
-        .main-title {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1.8rem;
-            color: var(--lol-gold);
-            text-shadow: 4px 4px #000;
-            margin-bottom: 20px;
-        }
-
-        /* Perfil Estilo Minecraft/LoL */
-        .container {
-            max-width: 900px;
-            margin: -80px auto 50px;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 20px;
-        }
-
-        .profile-card {
-            background: #091428;
-            border: 2px solid var(--lol-gold);
-            padding: 30px;
-            border-radius: 5px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
-
-        .avatar-frame {
-            width: 150px; height: 150px;
-            margin: 0 auto 20px;
-            border: 4px solid var(--lol-blue);
-            padding: 5px;
-            background: #010a13;
-            position: relative;
-        }
-
-        .avatar-img {
-            width: 100%; height: 100%;
-            background: url('https://i.imgur.com/A6uR0Xp.png') center/cover; /* Avatar genérico gamer */
-            display: flex; align-items: center; justify-content: center;
-            font-size: 80px;
-        }
-
-        .ig-link {
-            display: block;
-            margin-top: 20px;
-            padding: 10px;
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 3px;
-            font-size: 0.8rem;
-        }
-
-        /* Bloques de Estadísticas Minecraft */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .mc-block {
-            background: #313131;
-            border: 4px solid #000;
-            border-top-color: #555;
-            border-left-color: #555;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .mc-block span {
-            display: block;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1rem;
-            color: var(--mc-green);
-            margin-bottom: 10px;
-        }
-
-        .mc-block p { font-size: 0.7rem; margin: 0; color: #aaa; }
-
-        /* Manifiesto Estilo Quest */
-        .quest-log {
-            background: rgba(10, 20, 40, 0.9);
-            border: 1px solid var(--lol-blue);
-            padding: 25px;
-            margin-top: 20px;
-            text-align: left;
-        }
-
-        .quest-title {
-            color: var(--lol-blue);
-            border-bottom: 1px solid var(--lol-blue);
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            display: flex; align-items: center;
-        }
-
-        .panic-button {
-            background: #780a0a;
-            border: 2px solid #ff0000;
-            color: white;
-            padding: 20px;
-            width: 100%;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.8rem;
-            cursor: pointer;
-            margin-top: 30px;
-        }
-
-        .panic-button:hover { background: #ff0000; }
-
-        footer { padding: 40px; color: #444; font-size: 0.7rem; }
+        .ig-link { display: block; margin-top: 15px; padding: 10px; background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); color: white; text-decoration: none; border-radius: 5px; font-size: 0.8rem; font-weight: bold; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .mc-block { background: #222; border: 2px solid var(--lol-gold); padding: 15px; text-align: center; }
+        .mc-block span { display: block; font-family: 'Press Start 2P'; color: #38e038; font-size: 0.9rem; }
+        .panic-btn { background: #780a0a; color: white; border: 2px solid red; padding: 20px; width: 100%; margin-top: 20px; cursor: pointer; font-family: 'Press Start 2P'; font-size: 0.7rem; }
     </style>
 </head>
 <body>
 
     <div id="bloqueo">
-        <div class="main-title">INITIATING SYSTEM...</div>
-        <p style="color: var(--lol-blue); margin-bottom: 30px;">User: LuisErnesto_Pureza100</p>
-        <button class="btn-entrar" onclick="iniciar()">Play</button>
+        <h2 style="color: var(--lol-gold); font-family: 'Press Start 2P'; font-size: 1rem;">PLAYER FOUND: LUIS ERNESTO</h2>
+        <button class="btn-entrar" onclick="iniciar()">CARGAR PERFIL</button>
     </div>
 
-    <audio id="halo" loop>
-        <source src="halo.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="halo" loop><source src="halo.mp3" type="audio/mpeg"></audio>
 
     <header>
-        <div class="main-title">SANTUARIO GAMER</div>
-        <p style="color: var(--lol-blue); letter-spacing: 5px;">RANK: VIRGEN LEGENDARIO</p>
+        <h1 style="font-family: 'Press Start 2P'; color: var(--lol-gold); font-size: 1.5rem;">SANTUARIO GAMER</h1>
     </header>
 
     <div class="container">
         <div class="profile-card">
             <div class="avatar-frame">
-                <div class="avatar-img">👑</div>
+                <img src="amigo.png" alt="Luis Ernesto" class="avatar-img">
             </div>
-            <h2 style="margin: 0; color: var(--lol-gold);">LUIS ERNESTO</h2>
-            <p style="font-size: 0.8rem; color: #888;">Nivel 99 - Mago de la Virginidad</p>
-            
-            <a href="https://www.instagram.com/ernesto_zwlr/" target="_blank" class="ig-link">📸 VIEW INSTAGRAM</a>
+            <h2 style="margin: 0; color: var(--lol-gold); font-size: 1.2rem;">LUIS ERNESTO</h2>
+            <p style="font-size: 0.7rem; color: #888;">LVL 99 - ARCHIMAGO DE LA PUREZA</p>
+            <a href="https://www.instagram.com/ernesto_zwlr/" target="_blank" class="ig-link">📸 INSTAGRAM</a>
         </div>
 
         <div>
             <div class="stats-grid">
-                <div class="mc-block">
-                    <span>14</span>
-                    <p>DÍAS SIN DUCHA</p>
-                </div>
-                <div class="mc-block" style="border-bottom-color: var(--mc-green);">
-                    <span>0%</span>
-                    <p>VIDA SOCIAL</p>
-                </div>
-                <div class="mc-block">
-                    <span>342</span>
-                    <p>SKINS LOL</p>
-                </div>
+                <div class="mc-block"><span>14</span><p style="font-size: 0.6rem;">DÍAS SIN SOL</p></div>
+                <div class="mc-block"><span>0%</span><p style="font-size: 0.6rem;">SOCIAL</p></div>
+                <div class="mc-block"><span>342</span><p style="font-size: 0.6rem;">SKINS LOL</p></div>
             </div>
-
-            <div class="quest-log">
-                <div class="quest-title">📜 QUEST ACTIVE: PRESERVE PUREZA</div>
-                <p style="font-size: 0.9rem; line-height: 1.6;">
-                    - No tocar bloques de pasto (Grass Block).<br>
-                    - Escapar de cualquier NPC femenino.<br>
-                    - Farmear 500 horas de LoL antes de dormir.
-                </p>
+            <div style="background: rgba(10,20,40,0.9); border: 1px solid var(--lol-blue); padding: 20px; margin-top: 20px; text-align: left;">
+                <p style="color: var(--lol-blue); font-weight: bold;">📜 QUEST: MANTENER VIRGINIDAD</p>
+                <p style="font-size: 0.8rem;">- Evitar contacto visual con mujeres.<br>- No desinstalar el LoL jamás.<br>- Dormir con la PC encendida.</p>
             </div>
-
-            <button class="panic-button" onclick="alert('ERROR: SISTEMA SOBRECALENTADO POR ESTROGENO. ACTIVANDO ESCUDO DE OBSIDIANA.')">
-                🚨 BOTÓN DE PÁNICO
-            </button>
+            <button class="panic-btn" onclick="alert('ERROR: SISTEMA DE DEFENSA ACTIVADO.')">🚨 BOTÓN DE PÁNICO</button>
         </div>
     </div>
 
-    <footer>
-        v1.0.4 | DEVELOPED BY LUIS ERNESTO FOUNDATION | NO GIRLS ALLOWED
-    </footer>
-
     <script>
         function iniciar() {
-            var music = document.getElementById("halo");
-            music.play();
-            document.getElementById("bloqueo").style.opacity = "0";
-            setTimeout(() => {
-                document.getElementById("bloqueo").style.display = "none";
-            }, 500);
+            document.getElementById("halo").play();
+            document.getElementById("bloqueo").style.display = "none";
         }
     </script>
-
 </body>
 </html>
