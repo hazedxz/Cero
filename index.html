@@ -2,81 +2,59 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Para Vírgenes | Comunidad Oficial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <title>Santuario de la Virginidad | Luis Ernesto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #ffcc00; --dark: #0a0a0b; }
-        body, html { margin: 0; padding: 0; background-color: var(--dark); color: white; font-family: 'Segoe UI', sans-serif; text-align: center; }
+        body { background: #050505; color: white; font-family: sans-serif; text-align: center; margin: 0; overflow: hidden; }
         
-        /* Pantalla de Entrada Obligatoria */
+        /* Pantalla de inicio */
         #bloqueo { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .btn-entrar { border: 2px solid var(--gold); color: var(--gold); padding: 20px 40px; font-family: 'Orbitron', sans-serif; font-size: 1.2rem; background: none; cursor: pointer; border-radius: 10px; transition: 0.3s; letter-spacing: 2px; }
-        .btn-entrar:hover { background: var(--gold); color: black; box-shadow: 0 0 30px var(--gold); }
+        .btn-entrar { border: 2px solid #ffcc00; color: #ffcc00; padding: 20px 40px; font-family: 'Orbitron'; cursor: pointer; background: none; font-size: 1.2rem; transition: 0.3s; }
+        .btn-entrar:hover { background: #ffcc00; color: black; box-shadow: 0 0 20px #ffcc00; }
 
-        header { padding: 80px 20px; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://w0.peakpx.com/wallpaper/550/414/HD-wallpaper-halo-nebula-blue-galaxy-stars-space.jpg'); background-size: cover; border-bottom: 2px solid var(--gold); }
-        h1 { font-family: 'Orbitron', sans-serif; color: var(--gold); font-size: 2.5rem; margin: 0; text-shadow: 0 0 10px rgba(255,204,0,0.5); }
-        
-        .card { background: #16161a; width: 90%; max-width: 450px; margin: -50px auto 30px; padding: 30px; border-radius: 20px; border: 1px solid #333; box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
-        .avatar { width: 100px; height: 100px; border-radius: 50%; border: 4px solid var(--gold); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 50px; background: #1a1a1a; }
-        
-        .ig-btn { display: inline-block; padding: 12px 25px; background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); color: white; text-decoration: none; border-radius: 30px; font-weight: bold; margin-top: 15px; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; }
-
-        .stats { display: flex; justify-content: center; gap: 10px; margin: 25px 0; }
-        .stat-item { background: #222; padding: 15px; border-radius: 10px; border-bottom: 2px solid var(--gold); flex: 1; }
-        .stat-item b { display: block; font-size: 1.4rem; color: var(--gold); font-family: 'Orbitron', sans-serif; }
-
-        .btn-panico { background: #ff4757; color: white; border: none; padding: 18px 30px; border-radius: 10px; cursor: pointer; font-weight: bold; font-family: 'Orbitron', sans-serif; margin-top: 20px; width: 100%; }
-
-        /* Escondemos el video de YouTube */
-        #youtube-player { position: absolute; top: -9999px; left: -9999px; visibility: hidden; pointer-events: none; }
+        header { padding: 60px; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://w0.peakpx.com/wallpaper/550/414/HD-wallpaper-halo-nebula-blue-galaxy-stars-space.jpg'); border-bottom: 3px solid #ffcc00; }
+        .card { background: #111; width: 85%; max-width: 400px; margin: -40px auto; padding: 30px; border-radius: 20px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,1); }
+        .ig-btn { display: inline-block; padding: 12px 25px; background: linear-gradient(45deg, #f09433, #bc1888); color: white; text-decoration: none; border-radius: 30px; font-weight: bold; margin-top: 20px; font-family: 'Orbitron'; font-size: 0.7rem; }
     </style>
 </head>
 <body>
 
     <div id="bloqueo">
-        <h1 style="color: var(--gold); font-family: 'Orbitron'; margin-bottom: 20px;">SISTEMA DE SEGURIDAD</h1>
-        <p style="margin-bottom: 40px; color: #888;">Escaneando niveles de castidad de Luis Ernesto...</p>
-        <button class="btn-entrar" onclick="activarBroma()">VERIFICAR PUREZA</button>
+        <h1 style="color: #ffcc00; font-family: 'Orbitron';">ACCESO RESTRINGIDO</h1>
+        <p>Escaneando niveles de pureza de Luis Ernesto...</p>
+        <button class="btn-entrar" onclick="playBroma()">INGRESAR AL CONSEJO</button>
     </div>
 
-    <div id="youtube-player">
-        <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/0jXTBAGv9ZQ?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-    </div>
+    <audio id="halo" loop>
+        <source src="halo.mp3" type="audio/mpeg">
+    </audio>
 
     <header>
-        <h1>WEB PARA VÍRGENES</h1>
-        <p style="letter-spacing: 5px; color: #ccc;">PORTAL OFICIAL DE LUIS ERNESTO</p>
+        <h1 style="font-family: 'Orbitron'; color: #ffcc00; font-size: 2rem;">WEB PARA VÍRGENES</h1>
     </header>
 
     <div class="card">
-        <div class="avatar">🛡️</div>
-        <h2 style="font-family: 'Orbitron'; color: var(--gold); margin: 0;">Luis Ernesto</h2>
-        <p style="color: #888; font-style: italic; margin-top: 5px;">"El último Maestro de la Pureza"</p>
+        <div style="font-size: 60px;">🛡️</div>
+        <h2 style="font-family: 'Orbitron'; color: #ffcc00;">Luis Ernesto</h2>
+        <p style="color: #888;"><i>"Presidente del Club de los Intocables"</i></p>
         
-        <a href="https://www.instagram.com/ernesto_zwlr/" target="_blank" class="ig-btn">📸 INSTAGRAM DEL LÍDER</a>
+        <a href="https://www.instagram.com/ernesto_zwlr/" target="_blank" class="ig-btn">📸 SEGUIR AL LÍDER</a>
 
-        <div class="stats">
-            <div class="stat-item"><b>14</b>Días sin Sol</div>
-            <div class="stat-item"><b>0%</b>Social</div>
-            <div class="stat-item"><b>342</b>Skins LoL</div>
+        <div style="margin: 20px 0; display: flex; justify-content: space-around;">
+            <div><b style="color: #ffcc00; display: block;">14</b> Días sin Ducha</div>
+            <div><b style="color: #ffcc00; display: block;">0%</b> Novias</div>
+            <div><b style="color: #ffcc00; display: block;">342</b> Skins LoL</div>
         </div>
 
-        <button class="btn-panico" onclick="alert('PROTOCOLO: Luis Ernesto ha activado el camuflaje de habitación oscura.')">
-            🚨 BOTÓN DE PÁNICO
-        </button>
+        <button onclick="alert('¡ALERTA! Se detectó una mujer. Iniciando protocolo de huida inmediata.')" style="background:#ff4757; color:white; border:none; padding:15px; width:100%; border-radius:10px; cursor:pointer; font-weight:bold;">🚨 BOTÓN DE PÁNICO</button>
     </div>
 
     <script>
-        function activarBroma() {
-            // Mandamos la señal de "play" al video de YouTube
-            var iframe = document.getElementById("video");
-            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-            
-            // Quitamos el bloqueo
+        function playBroma() {
+            var music = document.getElementById("halo");
+            music.play();
             document.getElementById("bloqueo").style.display = "none";
         }
     </script>
-
 </body>
 </html>
