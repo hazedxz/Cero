@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Para Vírgenes | Comunidad Oficial</title>
+    <style>
+        :root { --gold: #ffcc00; --dark: #0a0a0b; }
+        body, html { margin: 0; padding: 0; background-color: var(--dark); color: white; font-family: 'Segoe UI', sans-serif; text-align: center; }
+        
+        /* Pantalla de Entrada Obligatoria */
+        #bloqueo { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .btn-entrar { border: 2px solid var(--gold); color: var(--gold); padding: 20px 40px; font-size: 1.5rem; background: none; cursor: pointer; border-radius: 10px; transition: 0.3s; }
+        .btn-entrar:hover { background: var(--gold); color: black; box-shadow: 0 0 30px var(--gold); }
+
+        /* Diseño Premium */
+        header { padding: 80px 20px; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://i.imgur.com/39S5R80.jpg'); background-size: cover; border-bottom: 3px solid var(--gold); }
+        .card { background: #16161a; width: 85%; max-width: 450px; margin: -50px auto 30px; padding: 30px; border-radius: 20px; border: 1px solid #333; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
+        .avatar { width: 100px; height: 100px; border-radius: 50%; border: 4px solid var(--gold); margin: 0 auto 15px; font-size: 3rem; display: flex; align-items: center; justify-content: center; }
+        
+        .ig-btn { display: inline-block; padding: 12px 25px; background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); color: white; text-decoration: none; border-radius: 30px; font-weight: bold; margin-top: 15px; }
+        
+        .stats { display: flex; justify-content: center; gap: 15px; margin: 30px 0; }
+        .stat-item { background: #222; padding: 15px; border-radius: 10px; border-bottom: 2px solid var(--gold); min-width: 100px; }
+        .stat-item b { display: block; font-size: 1.5rem; color: var(--gold); }
+
+        .btn-panico { background: #ff4757; color: white; border: none; padding: 15px 30px; border-radius: 50px; cursor: pointer; font-weight: bold; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+    <div id="bloqueo">
+        <h1 style="color: var(--gold);">SANTUARIO DE LUIS ERNESTO</h1>
+        <p>Verificando niveles de castidad...</p>
+        <button class="btn-entrar" onclick="activarBroma()">INGRESAR AL CLUB</button>
+    </div>
+
+    <audio id="audioHalo" loop>
+        <source src="https://www.myinstants.com/media/sounds/halo-theme-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <header>
+        <h1 style="color: var(--gold); font-size: 2.5rem;">🛡️ WEB PARA VÍRGENES 🛡️</h1>
+        <p>Liderando la resistencia desde la habitación de su mamá</p>
+    </header>
+
+    <div class="card">
+        <div class="avatar">👑</div>
+        <h2 style="margin: 0;">Luis Ernesto</h2>
+        <p style="color: #aaa; font-style: italic;">"El último Maestro de la Pureza"</p>
+        <a href="https://www.instagram.com/ernesto_zwlr/" target="_blank" class="ig-btn">📸 Seguir al Líder</a>
+    </div>
+
+    <div class="stats">
+        <div class="stat-item"><b>14</b> Días sin sol</div>
+        <div class="stat-item"><b>0%</b> Novias</div>
+        <div class="stat-item"><b>342</b> Skins LoL</div>
+    </div>
+
+    <div style="max-width: 500px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 15px; text-align: left;">
+        <h3 style="color: var(--gold); text-align: center;">📜 LEYES DE ERNESTO</h3>
+        <ul>
+            <li>No tocarás pasto (es peligroso).</li>
+            <li>Si una mujer te habla, es un bot de estafa.</li>
+            <li>El nivel en el juego es más importante que el aseo personal.</li>
+        </ul>
+    </div>
+
+    <button class="btn-panico" onclick="alert('PROTOCOLO ACTIVADO: Luis Ernesto está lanzando bombas de humo para escapar de una conversación social.')">
+        🚨 BOTÓN DE PÁNICO ANTICHICAS
+    </button>
+
+    <p style="color: #444; margin-top: 40px;">Visitante #1,452,301 | Estado: VIRGEN LEGENDARIO</p>
+
+    <script>
+        function activarBroma() {
+            // 1. Reproducir la música
+            var audio = document.getElementById("audioHalo");
+            audio.volume = 0.7; // Volumen al 70%
+            audio.play().catch(e => console.log("Error de audio:", e));
+
+            // 2. Quitar el bloqueo
+            document.getElementById("bloqueo").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
