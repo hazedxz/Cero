@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark Mode | Impacto Radical</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        :root { --accent: #00f2ff; --bg: #050505; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
+        h1 { font-family: 'Syncopate', sans-serif; font-size: clamp(2rem, 8vw, 5rem); line-height: 0.9; margin-bottom: 20px; }
+        .highlight { color: var(--accent); text-shadow: 0 0 20px rgba(0,242,255,0.5); }
+
+        .content-section { padding: 100px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        
+        .info-card { 
+            background: linear-gradient(145deg, #0a0a0a, #111); 
+            padding: 40px; border-radius: 20px; border: 1px solid #222;
+            transition: 0.4s;
+        }
+        .info-card:hover { border-color: var(--accent); transform: translateY(-10px); }
+        .info-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
+        .info-card h3 { font-size: 1.5rem; margin-bottom: 15px; text-transform: uppercase; }
+        .info-card p { color: #888; line-height: 1.6; }
+
+        .cta-box { background: var(--accent); color: #000; padding: 80px 5%; text-align: center; clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%); }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1 data-aos="zoom-out">DOMINA EL <br><span class="highlight">MERCADO DIGITAL</span></h1>
+        <p data-aos="fade-up" style="color: #666; font-size: 1.2rem;">No es solo una web, es un arma de ventas con estética Cyber-Tech.</p>
+    </section>
+
+    <section class="content-section">
+        <div class="info-card" data-aos="fade-right">
+            <i class="fas fa-bolt"></i>
+            <h3>Velocidad Absurda</h3>
+            <p>Cada milisegundo cuenta. Optimizamos el código para que tu cliente no espere, solo compre. Una web lenta es dinero perdido.</p>
+        </div>
+        <div class="info-card" data-aos="fade-up">
+            <i class="fas fa-eye"></i>
+            <h3>Retención Visual</h3>
+            <p>Diseños diseñados para hipnotizar. Reducimos la tasa de rebote manteniendo a los usuarios enganchados con interfaces modernas.</p>
+        </div>
+        <div class="info-card" data-aos="fade-left">
+            <i class="fas fa-shield-virus"></i>
+            <h3>Código Blindado</h3>
+            <p>Seguridad y escalabilidad. Tu sitio crecerá contigo sin romperse, utilizando las mejores prácticas de desarrollo actual.</p>
+        </div>
+    </section>
+
+    <div class="cta-box">
+        <h2 style="font-size: 2.5rem; font-family: 'Syncopate';">¿LISTO PARA EL SIGUIENTE NIVEL?</h2>
+        <p style="font-weight: 600; margin-top: 10px;">Tu competencia está usando plantillas. Tú necesitas un diseño a medida.</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>AOS.init({ duration: 1000 });</script>
+</body>
+</html>
